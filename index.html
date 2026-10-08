@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en-PH">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8f6">
+  <meta name="description" content="Discover freshly prepared, student-friendly snacks at SnackPop, Cebu Eastern College's campus snack stop.">
+  <title>SnackPop | Small Snacks, Big Fun</title>
+  <link rel="icon" href="assets/snackpop-logo.png" type="image/png">
+  <link rel="stylesheet" href="index.css">
+  <script type="module" src="https://pyscript.net/releases/2025.3.1/core.js"></script>
+  <script type="py" src="./main.py"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div class="announcement">
+    <p><span aria-hidden="true">✨</span> Campus cravings, covered. Selected treats from <strong>₱15</strong>.</p>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#home" aria-label="SnackPop home">
+        <img src="assets/snackpop-logo.png" alt="" width="48" height="48">
+        <span class="brand-copy">
+          <span class="brand-name">SnackPop</span>
+          <span class="brand-tagline">SMALL SNACKS, BIG FUN!</span>
+        </span>
+      </a>
+      <nav class="primary-nav" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#combo">Combos</a>
+        <a href="#about">About us</a>
+        <a href="#visit">Find us</a>
+      </nav>
+      <button class="button button-small button-outline cart-trigger" type="button" aria-haspopup="dialog" aria-controls="cart-dialog">
+        <span aria-hidden="true">🛍️</span> Your bag <span class="cart-count" aria-label="0 items">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero page-section" id="home" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span aria-hidden="true">✨</span> A little pick-me-up between classes</p>
+        <h1 id="hero-title">Small snacks.<br><span>Big fun!</span> <span aria-hidden="true">🍪🥞</span></h1>
+        <p class="hero-description">Freshly prepared, bite-sized treats, delicious dips and student-friendly prices. Make your next lecture break a little sweeter.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#menu">Explore the menu <span aria-hidden="true">↓</span></a>
+          <a class="button button-secondary" href="#combo">Build a combo <span aria-hidden="true">🎁</span></a>
+        </div>
+        <ul class="hero-highlights" aria-label="SnackPop highlights">
+          <li><span class="highlight-icon" aria-hidden="true">₱</span><span><strong>Student friendly</strong><small>Treats from ₱15</small></span></li>
+          <li><span class="highlight-icon" aria-hidden="true">🥨</span><span><strong>Made fresh</strong><small>Little bites, big joy</small></span></li>
+          <li><span class="highlight-icon" aria-hidden="true">📍</span><span><strong>On campus</strong><small>At Cebu Eastern College</small></span></li>
+        </ul>
+      </div>
+      <figure class="hero-image-wrap">
+        <img class="hero-image" src="assets/hero-treats.jpg" alt="A colorful SnackPop treat box with cookie fries and assorted dips" width="614" height="420" fetchpriority="high">
+        <figcaption class="image-note"><span aria-hidden="true">🍪</span><span><strong>Snack break, sorted.</strong><small>Choose a treat. Pick your favorite dip.</small></span></figcaption>
+      </figure>
+    </section>
+
+    <section class="menu-section page-section" id="menu" aria-labelledby="menu-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">MADE FOR YOUR BREAK</p>
+          <h2 id="menu-title">Meet your new favorites</h2>
+          <p>Small-batch treats, ready for your next campus snack break.</p>
+        </div>
+        <p class="price-note">Every treat is individually priced. Choose your flavor before adding it to your bag.</p>
+      </div>
+      <div class="filter-bar" role="group" aria-label="Filter menu">
+        <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All treats</button>
+        <button class="filter-button" type="button" data-filter="bestsellers" aria-pressed="false">Fan favorites</button>
+        <button class="filter-button" type="button" data-filter="sweet" aria-pressed="false">Sweet bites</button>
+        <button class="filter-button" type="button" data-filter="pretzels" aria-pressed="false">Pretzels</button>
+      </div>
+      <p class="sr-only" id="filter-status" aria-live="polite"></p>
+      <div class="product-grid" id="product-grid">
+        <article class="product-card" data-product="cookie-fries" data-categories="bestsellers sweet">
+          <div class="product-image-wrap">
+            <img src="assets/menu-01.jpg" alt="Golden cookie fries served with dipping sauces" width="389" height="240" loading="lazy">
+            <span class="product-badge">BEST SELLER</span>
+          </div>
+          <div class="product-content">
+            <div class="product-title-row"><h3>Cookie Fries</h3><span class="product-price">₱15</span></div>
+            <p class="product-description">Crispy, golden cookie sticks with a delicious dip on the side.</p>
+            <label class="select-label" for="flavor-cookie-fries">Choose a dip</label>
+            <select id="flavor-cookie-fries" class="flavor-select" data-flavor-for="cookie-fries">
+              <option>Milk chocolate</option><option>Hazelnut</option><option>Caramel</option>
+            </select>
+            <button class="button button-primary add-button" type="button" data-add="cookie-fries">Add to bag · ₱15</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-product="mini-pancakes" data-categories="bestsellers sweet">
+          <div class="product-image-wrap">
+            <img src="assets/menu-02.jpg" alt="Fluffy mini pancakes finished with a sweet glaze" width="389" height="240" loading="lazy">
+            <span class="product-badge badge-pink">FRESH &amp; FLUFFY</span>
+          </div>
+          <div class="product-content">
+            <div class="product-title-row"><h3>Mini Fluffy Pancakes</h3><span class="product-price">₱15</span></div>
+            <p class="product-description">Eight bite-sized golden hotcakes. Choose your favorite sweet finish.</p>
+            <label class="select-label" for="flavor-mini-pancakes">Choose a topping</label>
+            <select id="flavor-mini-pancakes" class="flavor-select" data-flavor-for="mini-pancakes">
+              <option>Berry glaze</option><option>Honey butter</option><option>Cocoa drizzle</option><option>Snow sugar</option>
+            </select>
+            <button class="button button-primary add-button" type="button" data-add="mini-pancakes">Add to bag · ₱15</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-product="lemon-bars" data-categories="sweet">
+          <div class="product-image-wrap">
+            <img src="assets/menu-03.jpg" alt="Zesty lemon bars with a dusting of sugar" width="389" height="240" loading="lazy">
+            <span class="product-badge badge-lemon">FRESH &amp; TANGY</span>
+          </div>
+          <div class="product-content">
+            <div class="product-title-row"><h3>Zesty Lemon Bars</h3><span class="product-price">₱18</span></div>
+            <p class="product-description">Tangy lemon curd on a buttery shortbread base with a dusting of sugar.</p>
+            <label class="select-label" for="flavor-lemon-bars">Choose a finish</label>
+            <select id="flavor-lemon-bars" class="flavor-select" data-flavor-for="lemon-bars">
+              <option>Real lemon curd</option><option>Snow sugar</option>
+            </select>
+            <button class="button button-primary add-button" type="button" data-add="lemon-bars">Add to bag · ₱18</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-product="cookie-trio" data-categories="sweet">
+          <div class="product-image-wrap">
+            <img src="assets/menu-04.jpg" alt="A trio of chocolate chip and red velvet mini cookies" width="389" height="240" loading="lazy">
+            <span class="product-badge badge-pink">CHEWY &amp; WARM</span>
+          </div>
+          <div class="product-content">
+            <div class="product-title-row"><h3>Snackable Cookie Trio</h3><span class="product-price">₱15</span></div>
+            <p class="product-description">Three pocket-sized cookies packed with chocolate chips and red velvet crumbs.</p>
+            <label class="select-label" for="flavor-cookie-trio">Choose a flavor</label>
+            <select id="flavor-cookie-trio" class="flavor-select" data-flavor-for="cookie-trio">
+              <option>Classic chocolate chip</option><option>Red velvet</option>
+            </select>
+            <button class="button button-primary add-button" type="button" data-add="cookie-trio">Add to bag · ₱15</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-product="dipped-pretzels" data-categories="pretzels">
+          <div class="product-image-wrap">
+            <img src="assets/menu-05.jpg" alt="Crunchy chocolate-dipped mini pretzels with colorful sprinkles" width="389" height="240" loading="lazy">
+            <span class="product-badge badge-coral">SWEET &amp; SALTY</span>
+          </div>
+          <div class="product-content">
+            <div class="product-title-row"><h3>Mini Dipped Pretzels</h3><span class="product-price">₱15</span></div>
+            <p class="product-description">Crisp salted pretzels dipped in milk chocolate with a sprinkle crunch.</p>
+            <label class="select-label" for="flavor-dipped-pretzels">Choose a topping</label>
+            <select id="flavor-dipped-pretzels" class="flavor-select" data-flavor-for="dipped-pretzels">
+              <option>Rainbow confetti</option><option>Chocolate sprinkles</option>
+            </select>
+            <button class="button button-primary add-button" type="button" data-add="dipped-pretzels">Add to bag · ₱15</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-product="pretzel-rods" data-categories="pretzels">
+          <div class="product-image-wrap">
+            <img src="assets/menu-06.jpg" alt="Two long pretzel rods drizzled with chocolate and confetti" width="389" height="240" loading="lazy">
+            <span class="product-badge badge-lilac">MADE TO SHARE</span>
+          </div>
+          <div class="product-content">
+            <div class="product-title-row"><h3>Dipped Pretzel Rods</h3><span class="product-price">₱18</span></div>
+            <p class="product-description">Two crunchy pretzel rods drizzled with chocolate and confetti.</p>
+            <label class="select-label" for="flavor-pretzel-rods">Choose a drizzle</label>
+            <select id="flavor-pretzel-rods" class="flavor-select" data-flavor-for="pretzel-rods">
+              <option>White vanilla</option><option>Dark cocoa</option>
+            </select>
+            <button class="button button-primary add-button" type="button" data-add="pretzel-rods">Add to bag · ₱18</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="combo-section page-section" id="combo" aria-labelledby="combo-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">YOUR SNACK, YOUR WAY</p>
+          <h2 id="combo-title">Build a snack box</h2>
+          <p>Pick a treat, add a classic lemonade, and choose a complimentary dip.</p>
+        </div>
+      </div>
+      <div class="combo-layout">
+        <div class="combo-builder">
+          <fieldset class="builder-step">
+            <legend><span class="step-number">1</span> Pick your snack</legend>
+            <label class="select-label" for="combo-snack">Snack</label>
+            <select id="combo-snack" class="combo-select" name="snack">
+              <option value="cookie-fries">Cookie Fries · combo price ₱25</option>
+              <option value="mini-pancakes">Mini Fluffy Pancakes · ₱15</option>
+              <option value="lemon-bars">Zesty Lemon Bars · ₱18</option>
+              <option value="cookie-trio">Snackable Cookie Trio · ₱15</option>
+              <option value="dipped-pretzels">Mini Dipped Pretzels · ₱15</option>
+              <option value="pretzel-rods">Dipped Pretzel Rods · ₱18</option>
+            </select>
+          </fieldset>
+          <fieldset class="builder-step">
+            <legend><span class="step-number">2</span> Add a drink</legend>
+            <label class="select-label" for="combo-drink">Drink</label>
+            <select id="combo-drink" class="combo-select" name="drink">
+              <option value="classic-lemonade">Classic lemonade · ₱20</option>
+            </select>
+            <p class="builder-help">Lemonade is the drink with a listed price. Other drink prices haven't been confirmed.</p>
+          </fieldset>
+          <fieldset class="builder-step">
+            <legend><span class="step-number">3</span> Choose your complimentary dip</legend>
+            <label class="select-label" for="combo-dip">Dip or topping</label>
+            <select id="combo-dip" class="combo-select" name="dip">
+              <option>Chocolate fudge</option><option>Salted caramel</option><option>Rainbow sprinkles</option><option>Snow sugar</option>
+            </select>
+          </fieldset>
+        </div>
+        <aside class="combo-summary" aria-labelledby="combo-summary-title">
+          <p class="eyebrow">A LITTLE BOX OF HAPPY</p>
+          <h3 id="combo-summary-title">Your custom box</h3>
+          <ul class="combo-breakdown" aria-live="polite">
+            <li><span id="combo-snack-name">Cookie Fries</span><strong id="combo-snack-price">₱25</strong></li>
+            <li><span id="combo-drink-name">Classic lemonade</span><strong>₱20</strong></li>
+            <li><span id="combo-dip-name">Dip: Chocolate fudge</span><strong class="free-label">FREE</strong></li>
+          </ul>
+          <p class="combo-total"><span>Box total</span><strong id="combo-total">₱45</strong></p>
+          <p class="combo-price-note">Cookie Fries are ₱15 on their own or ₱25 at the listed combo rate. Other snacks use their listed menu price. No unlisted prices are assumed.</p>
+          <button class="button button-primary add-combo" type="button">Add custom box to bag</button>
+        </aside>
+      </div>
+      <aside class="event-demo" aria-labelledby="event-demo-title">
+        <div class="event-demo-copy">
+          <p class="eyebrow">PYTHON EVENT DEMO</p>
+          <h3 id="event-demo-title">Your clicks, handled by Python</h3>
+          <p>Choose a snack, switch a filter, or update your bag. PyScript listens for browser events, runs a Python handler, and updates the page.</p>
+          <p class="runtime-status" id="pyscript-status" role="status">Loading PyScript and Python…</p>
+        </div>
+        <div class="event-console">
+          <div class="event-console-heading">
+            <span class="event-console-dot" aria-hidden="true"></span>
+            <h4>Live event log</h4>
+            <button class="event-clear" type="button" id="clear-event-log">Clear</button>
+          </div>
+          <ol class="event-log" id="event-log" aria-label="Recent Python-handled browser events" aria-live="polite" aria-relevant="additions text">
+            <li class="event-placeholder">Waiting for the Python event handlers to start…</li>
+          </ol>
+        </div>
+      </aside>
+    </section>
+
+    <section class="perks-section page-section" aria-labelledby="perks-title">
+      <div class="section-heading section-heading-center">
+        <p class="eyebrow">GOOD THINGS COME IN SMALL BITES</p>
+        <h2 id="perks-title">Made for campus life</h2>
+      </div>
+      <ul class="perks-grid">
+        <li><span class="perk-icon" aria-hidden="true">₱</span><h3>Easy on your allowance</h3><p>Everyday favorites, with treats starting at ₱15.</p></li>
+        <li><span class="perk-icon" aria-hidden="true">🥞</span><h3>Made fresh</h3><p>Small, bite-sized treats for a freshly made snack break.</p></li>
+        <li><span class="perk-icon" aria-hidden="true">🍓</span><h3>Pick your finishing touch</h3><p>Choose a topping, drizzle, or dip to make your snack your own.</p></li>
+        <li><span class="perk-icon" aria-hidden="true">🎓</span><h3>Student owned</h3><p>Built by Cebu Eastern College students, for the campus community.</p></li>
+      </ul>
+    </section>
+
+    <section class="about-section page-section" id="about" aria-labelledby="about-title">
+      <div class="about-copy">
+        <p class="eyebrow">PROUDLY STUDENT-OWNED &amp; OPERATED</p>
+        <h2 id="about-title">Five classmates.<br><span>One sweet idea.</span></h2>
+        <p>We started SnackPop because a study break deserves more than the usual snack. Our team of Cebu Eastern College student partners makes little treats with lots of care—and prices that work for campus life.</p>
+        <p>Thanks for supporting fellow students, one bite at a time.</p>
+      </div>
+      <ul class="founder-list" aria-label="SnackPop's five founders">
+        <li><span class="founder-initial" aria-hidden="true">E</span><span><strong>Ej</strong><small>Baker &amp; Product Lead</small></span></li>
+        <li><span class="founder-initial" aria-hidden="true">J</span><span><strong>Jennylen</strong><small>Operations</small></span></li>
+        <li><span class="founder-initial" aria-hidden="true">K</span><span><strong>Kristel Kaye</strong><small>Student Finance</small></span></li>
+        <li><span class="founder-initial" aria-hidden="true">K</span><span><strong>Khrisya Mae</strong><small>Recipe Innovation</small></span></li>
+        <li><span class="founder-initial" aria-hidden="true">J</span><span><strong>John Marl</strong><small>Logistics &amp; Tech</small></span></li>
+      </ul>
+    </section>
+
+    <section class="visit-section page-section" id="visit" aria-labelledby="visit-title">
+      <div class="visit-copy">
+        <p class="eyebrow">COME SAY HI</p>
+        <h2 id="visit-title">Your campus snack stop</h2>
+        <p>Find us at the Cebu Eastern College Main Campus, along the campus lane near the Dimsum &amp; Snack Strip.</p>
+        <a class="text-link" href="#menu">Pick your snack <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="visit-card">
+        <div class="visit-detail"><span class="visit-icon" aria-hidden="true">📍</span><div><h3>Find the stall</h3><p>CEC Main Campus Lane<br>Dimsum &amp; Snack Strip, Cebu City</p></div></div>
+        <div class="visit-detail"><span class="visit-icon" aria-hidden="true">🕒</span><div><h3>Opening hours</h3><p>Monday–Friday: 8:00 AM–7:30 PM<br>Saturday: 9:00 AM–5:00 PM<br>Sunday: Closed</p></div></div>
+        <p class="visit-note">Ask the stall about ingredients and allergen information before ordering.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#home" aria-label="SnackPop home">
+      <img src="assets/snackpop-logo.png" alt="" width="40" height="40" loading="lazy">
+      <span class="brand-copy"><span class="brand-name">SnackPop</span><span class="brand-tagline">SMALL SNACKS, BIG FUN!</span></span>
+    </a>
+    <p>Little campus treats, made with care in Cebu City.</p>
+    <p class="footer-note">The bag and pickup confirmation on this site are a local demo. Orders and payments are not sent or processed.</p>
+    <p class="copyright">© <span id="current-year">2026</span> SnackPop. Made for campus snack breaks.</p>
+  </footer>
+
+  <dialog class="cart-dialog" id="cart-dialog" aria-labelledby="cart-title">
+    <div class="cart-header">
+      <div><p class="eyebrow">SOMETHING GOOD IS IN HERE</p><h2 id="cart-title">Your snack bag</h2></div>
+      <button class="icon-button" type="button" data-close-cart aria-label="Close snack bag">✕</button>
+    </div>
+    <p class="cart-empty" id="cart-empty">Your bag is empty. Pick a treat to get started!</p>
+    <ul class="cart-items" id="cart-items" aria-label="Items in your snack bag"></ul>
+    <div class="cart-footer">
+      <p class="cart-total"><span>Total</span><strong id="cart-total">₱0</strong></p>
+      <p class="demo-notice">Local demo only: no payment is collected and no order is sent to the stall.</p>
+      <button class="button button-primary checkout-button" id="checkout-button" type="button" disabled>Create pickup confirmation</button>
+    </div>
+    <div class="order-confirmation" id="order-confirmation" role="status" aria-live="polite" hidden>
+      <p class="eyebrow">DEMO CONFIRMATION</p>
+      <h3>Your local pickup code</h3>
+      <p class="pickup-code" id="pickup-code"></p>
+      <p>This code was created only in this browser. The SnackPop stall has not received your order. Please order directly with the stall.</p>
+    </div>
+  </dialog>
+
+  <p class="sr-only" id="cart-status" role="status" aria-live="polite"></p>
+  <noscript><p class="noscript-notice">Interactive features use Python in PyScript and require JavaScript and an internet connection. Please serve this site over HTTP or HTTPS.</p></noscript>
+</body>
+</html>
