@@ -1,8 +1,10 @@
+
 """PyScript-powered, event-driven interactions for the SnackPop demo."""
 
 from datetime import date
 from secrets import randbelow
 
+from js import confirm
 from pyodide.ffi import create_proxy  # type: ignore[reportMissingModuleSource]
 from pyscript import document  # type: ignore[reportMissingModuleSource]
 
@@ -27,6 +29,7 @@ cart_count = document.querySelector(".cart-count")
 cart_trigger = document.querySelector(".cart-trigger")
 cart_status = document.querySelector("#cart-status")
 checkout_button = document.querySelector("#checkout-button")
+clear_cart_button = document.querySelector("#clear-cart-button")
 confirmation = document.querySelector("#order-confirmation")
 event_log = document.querySelector("#event-log")
 event_callbacks = []
@@ -56,7 +59,10 @@ def log_event(event_type: str, description: str) -> None:
 
 def render_cart() -> None:
     item_count = sum(int(item["quantity"]) for item in cart.values())
-    total = sum(int(item["price"]) * int(item["quantity"]) for item in cart.values())
+    total = sum(
+        int(item["price"]) * int(item["quantity"])
+        for item in cart.values()
+    )
 
     cart_items.replaceChildren()
     cart_empty.hidden = item_count != 0
@@ -70,6 +76,7 @@ def render_cart() -> None:
         f"Open snack bag, {item_count} {'item' if item_count == 1 else 'items'}",
     )
     checkout_button.disabled = item_count == 0
+    clear_cart_button.hidden = item_count == 0
 
     for key, item in cart.items():
         row = document.createElement("li")
@@ -80,6 +87,7 @@ def render_cart() -> None:
         title = document.createElement("strong")
         title.textContent = str(item["name"])
         copy.append(title)
+
         if item["detail"]:
             detail = document.createElement("small")
             detail.textContent = str(item["detail"])
@@ -195,6 +203,7 @@ def handle_filter(event) -> None:
 
     selected_filter = str(button.dataset.filter)
     visible_count = 0
+
     for card in document.querySelectorAll(".product-card"):
         categories = str(card.dataset.categories).split()
         visible = selected_filter == "all" or selected_filter in categories
@@ -243,6 +252,7 @@ def handle_add_combo(event) -> None:
     dip = str(document.querySelector("#combo-dip").value)
     name = f"{snack['name']} snack box"
     detail = f"Classic lemonade · complimentary {dip.lower()}"
+
     add_to_cart(
         f"combo:{snack_id}:{dip}",
         name,
@@ -262,6 +272,7 @@ def handle_cart_change(event) -> None:
         removed_item = cart.pop(key, None)
         if removed_item is None:
             return
+
         confirmation.hidden = True
         checkout_button.hidden = False
         render_cart()
@@ -280,6 +291,7 @@ def handle_cart_change(event) -> None:
 
         change = int(button.dataset.change)
         item["quantity"] = int(item["quantity"]) + change
+
         if int(item["quantity"]) <= 0:
             cart.pop(key)
             confirmation.hidden = True
@@ -295,6 +307,7 @@ def handle_cart_change(event) -> None:
         confirmation.hidden = True
         checkout_button.hidden = False
         render_cart()
+
         for control in cart_items.querySelectorAll("[data-quantity]"):
             if (
                 control.dataset.quantity == key
@@ -305,11 +318,40 @@ def handle_cart_change(event) -> None:
 
         quantity = int(item["quantity"])
         noun = "item" if quantity == 1 else "items"
-        cart_status.textContent = f"{item['name']} quantity updated to {quantity}."
+        cart_status.textContent = (
+            f"{item['name']} quantity updated to {quantity}."
+        )
         log_event(
             str(event.type),
             f"Updated {item['name']} quantity to {quantity} {noun}.",
         )
+
+
+def handle_clear_cart(event) -> None:
+    if not cart:
+        return
+
+    if not confirm(
+        "Are you sure you want to remove all items from your snack bag?"
+    ):
+        return
+
+    removed_count = sum(
+        int(item["quantity"]) for item in cart.values()
+    )
+
+    cart.clear()
+    confirmation.hidden = True
+    checkout_button.hidden = False
+    render_cart()
+
+    cart_status.textContent = (
+        f"Your snack bag has been cleared. {removed_count} items removed."
+    )
+    log_event(
+        str(event.type),
+        f"Cleared all items from the bag ({removed_count} items).",
+    )
 
 
 def handle_checkout(event) -> None:
@@ -349,6 +391,7 @@ listen(document.querySelector("#combo-snack"), "change", update_combo)
 listen(document.querySelector("#combo-dip"), "change", update_combo)
 listen(document.querySelector(".add-combo"), "click", handle_add_combo)
 listen(checkout_button, "click", handle_checkout)
+listen(clear_cart_button, "click", handle_clear_cart)
 listen(document.querySelector("#clear-event-log"), "click", handle_clear_event_log)
 
 document.querySelector("#current-year").textContent = str(date.today().year)
