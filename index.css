@@ -141,7 +141,9 @@ h1 > span:first-of-type, .about-copy h2 span { color: var(--orange-dark); }
 .product-description { min-height: 3.25em; margin-bottom: .85rem; color: var(--muted); font-size: .81rem; line-height: 1.6; }
 .select-label { display: block; margin-bottom: .38rem; color: var(--muted); font-size: .74rem; font-weight: 750; }
 .flavor-select, .combo-select { width: 100%; min-height: 42px; padding: .55rem .75rem; border: 1px solid var(--border); border-radius: .65rem; background: var(--white); color: var(--ink); font-size: .82rem; }
-.add-button { width: 100%; min-height: 42px; margin-top: auto; padding: .65rem .8rem; font-size: .81rem; }
+.product-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; margin-top: auto; }
+.product-actions .button { width: 100%; min-height: 42px; padding: .6rem .45rem; font-size: .74rem; }
+.add-button { min-height: 42px; }
 .product-content .flavor-select { margin-bottom: .8rem; }
 
 .combo-section { background: var(--cream); }
@@ -316,7 +318,9 @@ h1 > span:first-of-type, .about-copy h2 span { color: var(--orange-dark); }
   .product-description { min-height: 0; margin-bottom: .6rem; font-size: .72rem; }
   .select-label { font-size: .68rem; }
   .flavor-select { min-height: 38px; padding: .4rem .5rem; font-size: .71rem; }
-  .add-button { min-height: 38px; margin-top: .15rem; padding: .5rem; font-size: .72rem; }
+  .product-actions { gap: .35rem; }
+  .product-actions .button { min-height: 38px; padding: .45rem .25rem; font-size: .62rem; }
+  .add-button { min-height: 38px; margin-top: .15rem; }
   .combo-layout, .about-section, .visit-section { grid-template-columns: 1fr; gap: 1rem; }
   .combo-layout { gap: .85rem; }
   .event-demo { padding: .9rem; }

@@ -178,11 +178,14 @@ def handle_keydown(event) -> None:
 
 
 def handle_product_add(event) -> None:
-    button = event.target.closest("button[data-add]")
+    button = event.target.closest("button[data-add], button[data-order-now]")
     if not button:
         return
 
-    snack_id = str(button.dataset.add)
+    order_now = button.hasAttribute("data-order-now")
+    snack_id = str(
+        button.dataset.orderNow if order_now else button.dataset.add
+    )
     snack = SNACKS[snack_id]
     flavor = str(
         document.querySelector(f'[data-flavor-for="{snack_id}"]').value
@@ -194,6 +197,8 @@ def handle_product_add(event) -> None:
         str(event.type),
         flavor,
     )
+    if order_now:
+        open_cart(event)
 
 
 def handle_filter(event) -> None:
