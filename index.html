@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-PH">
 <head>
@@ -15,9 +16,8 @@
   <a class="skip-link" href="#main-content">Skip to content</a>
 
   <div class="announcement">
-    <p><span aria-hidden="true">✨</span> Campus cravings, covered. Selected treats from <strong>₱15</strong>.</p>
+    <p><span aria-hidden="true">✨</span> Campus cravings, covered. Selected treats from <strong>₱10</strong>.</p>
   </div>
-
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="#home" aria-label="SnackPop home">
@@ -51,9 +51,9 @@
           <a class="button button-secondary" href="#combo">Build a combo <span aria-hidden="true">🎁</span></a>
         </div>
         <ul class="hero-highlights" aria-label="SnackPop highlights">
-          <li><span class="highlight-icon" aria-hidden="true">₱</span><span><strong>Student friendly</strong><small>Treats from ₱15</small></span></li>
-          <li><span class="highlight-icon" aria-hidden="true">🥨</span><span><strong>Made fresh</strong><small>Little bites, big joy</small></span></li>
-          <li><span class="highlight-icon" aria-hidden="true">📍</span><span><strong>On campus</strong><small>At Cebu Eastern College</small></span></li>
+          <li class="highlight-card-student"><span class="highlight-icon" aria-hidden="true">₱</span><span><strong class="highlight-label highlight-student">Student friendly</strong><small>Treats from ₱10</small></span></li>
+          <li class="highlight-card-fresh"><span class="highlight-icon" aria-hidden="true">🥨</span><span><strong class="highlight-label highlight-fresh">Made fresh</strong><small>Little bites, big joy</small></span></li>
+          <li class="highlight-card-campus"><span class="highlight-icon" aria-hidden="true">📍</span><span><strong class="highlight-label highlight-campus">On campus</strong><small>At Cebu Eastern College</small></span></li>
         </ul>
       </div>
       <figure class="hero-image-wrap">
@@ -69,7 +69,7 @@
           <h2 id="menu-title">Meet your new favorites</h2>
           <p>Small-batch treats, ready for your next campus snack break.</p>
         </div>
-        <p class="price-note">Every treat is individually priced. Choose your flavor before adding it to your bag.</p>
+        <p class="price-note">Estimated prices per serving; actual costs vary by recipe, portion size, and supplier. Choose your flavor before adding it to your bag.</p>
       </div>
       <div class="filter-bar" role="group" aria-label="Filter menu">
         <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All treats</button>
@@ -85,13 +85,16 @@
             <span class="product-badge">BEST SELLER</span>
           </div>
           <div class="product-content">
-            <div class="product-title-row"><h3>Cookie Fries</h3><span class="product-price">₱15</span></div>
+            <div class="product-title-row"><h3>Cookie Fries</h3><span class="product-price">₱20</span></div>
             <p class="product-description">Crispy, golden cookie sticks with a delicious dip on the side.</p>
             <label class="select-label" for="flavor-cookie-fries">Choose a dip</label>
             <select id="flavor-cookie-fries" class="flavor-select" data-flavor-for="cookie-fries">
               <option>Milk chocolate</option><option>Hazelnut</option><option>Caramel</option>
             </select>
-            <button class="button button-primary add-button" type="button" data-add="cookie-fries">Add to bag · ₱15</button>
+            <div class="product-actions">
+              <button class="button button-primary add-button" type="button" data-add="cookie-fries">Add to bag</button>
+              <button class="button button-secondary order-now-button" type="button" data-order-now="cookie-fries">Order now</button>
+            </div>
           </div>
         </article>
 
@@ -101,13 +104,16 @@
             <span class="product-badge badge-pink">FRESH &amp; FLUFFY</span>
           </div>
           <div class="product-content">
-            <div class="product-title-row"><h3>Mini Fluffy Pancakes</h3><span class="product-price">₱15</span></div>
+            <div class="product-title-row"><h3>Mini Fluffy Pancakes</h3><span class="product-price">₱25</span></div>
             <p class="product-description">Eight bite-sized golden hotcakes. Choose your favorite sweet finish.</p>
             <label class="select-label" for="flavor-mini-pancakes">Choose a topping</label>
             <select id="flavor-mini-pancakes" class="flavor-select" data-flavor-for="mini-pancakes">
               <option>Berry glaze</option><option>Honey butter</option><option>Cocoa drizzle</option><option>Snow sugar</option>
             </select>
-            <button class="button button-primary add-button" type="button" data-add="mini-pancakes">Add to bag · ₱15</button>
+            <div class="product-actions">
+              <button class="button button-primary add-button" type="button" data-add="mini-pancakes">Add to bag</button>
+              <button class="button button-secondary order-now-button" type="button" data-order-now="mini-pancakes">Order now</button>
+            </div>
           </div>
         </article>
 
@@ -117,13 +123,16 @@
             <span class="product-badge badge-lemon">FRESH &amp; TANGY</span>
           </div>
           <div class="product-content">
-            <div class="product-title-row"><h3>Zesty Lemon Bars</h3><span class="product-price">₱18</span></div>
+            <div class="product-title-row"><h3>Zesty Lemon Bars</h3><span class="product-price">₱25</span></div>
             <p class="product-description">Tangy lemon curd on a buttery shortbread base with a dusting of sugar.</p>
             <label class="select-label" for="flavor-lemon-bars">Choose a finish</label>
             <select id="flavor-lemon-bars" class="flavor-select" data-flavor-for="lemon-bars">
               <option>Real lemon curd</option><option>Snow sugar</option>
             </select>
-            <button class="button button-primary add-button" type="button" data-add="lemon-bars">Add to bag · ₱18</button>
+            <div class="product-actions">
+              <button class="button button-primary add-button" type="button" data-add="lemon-bars">Add to bag</button>
+              <button class="button button-secondary order-now-button" type="button" data-order-now="lemon-bars">Order now</button>
+            </div>
           </div>
         </article>
 
@@ -133,13 +142,16 @@
             <span class="product-badge badge-pink">CHEWY &amp; WARM</span>
           </div>
           <div class="product-content">
-            <div class="product-title-row"><h3>Snackable Cookie Trio</h3><span class="product-price">₱15</span></div>
+            <div class="product-title-row"><h3>Snackable Cookie Trio</h3><span class="product-price">₱22</span></div>
             <p class="product-description">Three pocket-sized cookies packed with chocolate chips and red velvet crumbs.</p>
             <label class="select-label" for="flavor-cookie-trio">Choose a flavor</label>
             <select id="flavor-cookie-trio" class="flavor-select" data-flavor-for="cookie-trio">
               <option>Classic chocolate chip</option><option>Red velvet</option>
             </select>
-            <button class="button button-primary add-button" type="button" data-add="cookie-trio">Add to bag · ₱15</button>
+            <div class="product-actions">
+              <button class="button button-primary add-button" type="button" data-add="cookie-trio">Add to bag</button>
+              <button class="button button-secondary order-now-button" type="button" data-order-now="cookie-trio">Order now</button>
+            </div>
           </div>
         </article>
 
@@ -149,13 +161,16 @@
             <span class="product-badge badge-coral">SWEET &amp; SALTY</span>
           </div>
           <div class="product-content">
-            <div class="product-title-row"><h3>Mini Dipped Pretzels</h3><span class="product-price">₱15</span></div>
+            <div class="product-title-row"><h3>Mini Dipped Pretzels</h3><span class="product-price">₱10</span></div>
             <p class="product-description">Crisp salted pretzels dipped in milk chocolate with a sprinkle crunch.</p>
             <label class="select-label" for="flavor-dipped-pretzels">Choose a topping</label>
             <select id="flavor-dipped-pretzels" class="flavor-select" data-flavor-for="dipped-pretzels">
               <option>Rainbow confetti</option><option>Chocolate sprinkles</option>
             </select>
-            <button class="button button-primary add-button" type="button" data-add="dipped-pretzels">Add to bag · ₱15</button>
+            <div class="product-actions">
+              <button class="button button-primary add-button" type="button" data-add="dipped-pretzels">Add to bag</button>
+              <button class="button button-secondary order-now-button" type="button" data-order-now="dipped-pretzels">Order now</button>
+            </div>
           </div>
         </article>
 
@@ -165,13 +180,16 @@
             <span class="product-badge badge-lilac">MADE TO SHARE</span>
           </div>
           <div class="product-content">
-            <div class="product-title-row"><h3>Dipped Pretzel Rods</h3><span class="product-price">₱18</span></div>
+            <div class="product-title-row"><h3>Dipped Pretzel Rods</h3><span class="product-price">₱15</span></div>
             <p class="product-description">Two crunchy pretzel rods drizzled with chocolate and confetti.</p>
             <label class="select-label" for="flavor-pretzel-rods">Choose a drizzle</label>
             <select id="flavor-pretzel-rods" class="flavor-select" data-flavor-for="pretzel-rods">
               <option>White vanilla</option><option>Dark cocoa</option>
             </select>
-            <button class="button button-primary add-button" type="button" data-add="pretzel-rods">Add to bag · ₱18</button>
+            <div class="product-actions">
+              <button class="button button-primary add-button" type="button" data-add="pretzel-rods">Add to bag</button>
+              <button class="button button-secondary order-now-button" type="button" data-order-now="pretzel-rods">Order now</button>
+            </div>
           </div>
         </article>
       </div>
@@ -182,7 +200,7 @@
         <div>
           <p class="eyebrow">YOUR SNACK, YOUR WAY</p>
           <h2 id="combo-title">Build a snack box</h2>
-          <p>Pick a treat, add a classic lemonade, and choose a complimentary dip.</p>
+          <p>Pick a treat, choose a drink, and add a complimentary dip.</p>
         </div>
       </div>
       <div class="combo-layout">
@@ -191,21 +209,24 @@
             <legend><span class="step-number">1</span> Pick your snack</legend>
             <label class="select-label" for="combo-snack">Snack</label>
             <select id="combo-snack" class="combo-select" name="snack">
-              <option value="cookie-fries">Cookie Fries · combo price ₱25</option>
-              <option value="mini-pancakes">Mini Fluffy Pancakes · ₱15</option>
-              <option value="lemon-bars">Zesty Lemon Bars · ₱18</option>
-              <option value="cookie-trio">Snackable Cookie Trio · ₱15</option>
-              <option value="dipped-pretzels">Mini Dipped Pretzels · ₱15</option>
-              <option value="pretzel-rods">Dipped Pretzel Rods · ₱18</option>
+              <option value="cookie-fries">Cookie Fries · combo snack price ₱18</option>
+              <option value="mini-pancakes">Mini Fluffy Pancakes · ₱25</option>
+              <option value="lemon-bars">Zesty Lemon Bars · ₱25</option>
+              <option value="cookie-trio">Snackable Cookie Trio · ₱22</option>
+              <option value="dipped-pretzels">Mini Dipped Pretzels · ₱10</option>
+              <option value="pretzel-rods">Dipped Pretzel Rods · ₱15</option>
             </select>
           </fieldset>
           <fieldset class="builder-step">
             <legend><span class="step-number">2</span> Add a drink</legend>
             <label class="select-label" for="combo-drink">Drink</label>
             <select id="combo-drink" class="combo-select" name="drink">
-              <option value="classic-lemonade">Classic lemonade · ₱20</option>
+              <option value="classic-lemonade">Classic lemonade · ₱12</option>
+              <option value="iced-tea">Iced tea · ₱15</option>
+              <option value="fruit-juice">Fruit juice · ₱20</option>
+              <option value="bottled-water">Bottled water · ₱10</option>
             </select>
-            <p class="builder-help">Lemonade is the drink with a listed price. Other drink prices haven't been confirmed.</p>
+            <p class="builder-help">Estimated serving price; actual costs vary by recipe, portion size, and supplier.</p>
           </fieldset>
           <fieldset class="builder-step">
             <legend><span class="step-number">3</span> Choose your complimentary dip</legend>
@@ -219,12 +240,12 @@
           <p class="eyebrow">A LITTLE BOX OF HAPPY</p>
           <h3 id="combo-summary-title">Your custom box</h3>
           <ul class="combo-breakdown" aria-live="polite">
-            <li><span id="combo-snack-name">Cookie Fries</span><strong id="combo-snack-price">₱25</strong></li>
-            <li><span id="combo-drink-name">Classic lemonade</span><strong>₱20</strong></li>
+            <li><span id="combo-snack-name">Cookie Fries</span><strong id="combo-snack-price">₱18</strong></li>
+            <li><span id="combo-drink-name">Classic lemonade</span><strong id="combo-drink-price">₱12</strong></li>
             <li><span id="combo-dip-name">Dip: Chocolate fudge</span><strong class="free-label">FREE</strong></li>
           </ul>
-          <p class="combo-total"><span>Box total</span><strong id="combo-total">₱45</strong></p>
-          <p class="combo-price-note">Cookie Fries are ₱15 on their own or ₱25 at the listed combo rate. Other snacks use their listed menu price. No unlisted prices are assumed.</p>
+          <p class="combo-total"><span>Box total</span><strong id="combo-total">₱30</strong></p>
+          <p class="combo-price-note">Estimated student-friendly snack and drink prices range from ₱10 to ₱25. Cookie Fries are ₱20 on their own or ₱18 in a snack box; other snacks use their listed menu price. The box total combines the snack and selected drink; actual ingredient and portion costs may vary.</p>
           <button class="button button-primary add-combo" type="button">Add custom box to bag</button>
         </aside>
       </div>
@@ -254,7 +275,7 @@
         <h2 id="perks-title">Made for campus life</h2>
       </div>
       <ul class="perks-grid">
-        <li><span class="perk-icon" aria-hidden="true">₱</span><h3>Easy on your allowance</h3><p>Everyday favorites, with treats starting at ₱15.</p></li>
+        <li><span class="perk-icon" aria-hidden="true">₱</span><h3>Easy on your allowance</h3><p>Everyday favorites, with treats starting at ₱10.</p></li>
         <li><span class="perk-icon" aria-hidden="true">🥞</span><h3>Made fresh</h3><p>Small, bite-sized treats for a freshly made snack break.</p></li>
         <li><span class="perk-icon" aria-hidden="true">🍓</span><h3>Pick your finishing touch</h3><p>Choose a topping, drizzle, or dip to make your snack your own.</p></li>
         <li><span class="perk-icon" aria-hidden="true">🎓</span><h3>Student owned</h3><p>Built by Cebu Eastern College students, for the campus community.</p></li>
@@ -309,6 +330,7 @@
     </div>
     <p class="cart-empty" id="cart-empty">Your bag is empty. Pick a treat to get started!</p>
     <ul class="cart-items" id="cart-items" aria-label="Items in your snack bag"></ul>
+    <button class="button button-secondary" id="clear-cart-button" type="button" hidden>Clear all items</button>
     <div class="cart-footer">
       <p class="cart-total"><span>Total</span><strong id="cart-total">₱0</strong></p>
       <p class="demo-notice">Local demo only: no payment is collected and no order is sent to the stall.</p>
