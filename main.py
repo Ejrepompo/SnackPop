@@ -10,14 +10,14 @@ from pyscript import document  # type: ignore[reportMissingModuleSource]
 
 
 SNACKS = {
-    "cookie-fries": {"name": "Cookie Fries", "price": 15, "combo_price": 25},
-    "mini-pancakes": {"name": "Mini Fluffy Pancakes", "price": 15},
-    "lemon-bars": {"name": "Zesty Lemon Bars", "price": 18},
-    "cookie-trio": {"name": "Snackable Cookie Trio", "price": 15},
-    "dipped-pretzels": {"name": "Mini Dipped Pretzels", "price": 15},
-    "pretzel-rods": {"name": "Dipped Pretzel Rods", "price": 18},
+    "cookie-fries": {"name": "Cookie Fries", "price": 20, "combo_price": 18},
+    "mini-pancakes": {"name": "Mini Fluffy Pancakes", "price": 25},
+    "lemon-bars": {"name": "Zesty Lemon Bars", "price": 25},
+    "cookie-trio": {"name": "Snackable Cookie Trio", "price": 22},
+    "dipped-pretzels": {"name": "Mini Dipped Pretzels", "price": 10},
+    "pretzel-rods": {"name": "Dipped Pretzel Rods", "price": 15},
 }
-LEMONADE_PRICE = 20
+LEMONADE_PRICE = 12
 EVENT_LOG_LIMIT = 6
 
 cart: dict[str, dict[str, str | int]] = {}
