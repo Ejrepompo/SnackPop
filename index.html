@@ -200,7 +200,7 @@
         <div>
           <p class="eyebrow">YOUR SNACK, YOUR WAY</p>
           <h2 id="combo-title">Build a snack box</h2>
-          <p>Pick a treat, add a classic lemonade, and choose a complimentary dip.</p>
+          <p>Pick a treat, choose a drink, and add a complimentary dip.</p>
         </div>
       </div>
       <div class="combo-layout">
@@ -222,6 +222,9 @@
             <label class="select-label" for="combo-drink">Drink</label>
             <select id="combo-drink" class="combo-select" name="drink">
               <option value="classic-lemonade">Classic lemonade · ₱12</option>
+              <option value="iced-tea">Iced tea · ₱15</option>
+              <option value="fruit-juice">Fruit juice · ₱20</option>
+              <option value="bottled-water">Bottled water · ₱10</option>
             </select>
             <p class="builder-help">Estimated serving price; actual costs vary by recipe, portion size, and supplier.</p>
           </fieldset>
@@ -238,11 +241,11 @@
           <h3 id="combo-summary-title">Your custom box</h3>
           <ul class="combo-breakdown" aria-live="polite">
             <li><span id="combo-snack-name">Cookie Fries</span><strong id="combo-snack-price">₱18</strong></li>
-            <li><span id="combo-drink-name">Classic lemonade</span><strong>₱12</strong></li>
+            <li><span id="combo-drink-name">Classic lemonade</span><strong id="combo-drink-price">₱12</strong></li>
             <li><span id="combo-dip-name">Dip: Chocolate fudge</span><strong class="free-label">FREE</strong></li>
           </ul>
           <p class="combo-total"><span>Box total</span><strong id="combo-total">₱30</strong></p>
-          <p class="combo-price-note">Estimated student-friendly snack prices range from ₱10 to ₱25. Cookie Fries are ₱20 on their own or ₱18 in a snack box; other snacks use their listed menu price. Lemonade is ₱12. The box total combines the snack and drink; actual ingredient and portion costs may vary.</p>
+          <p class="combo-price-note">Estimated student-friendly snack and drink prices range from ₱10 to ₱25. Cookie Fries are ₱20 on their own or ₱18 in a snack box; other snacks use their listed menu price. The box total combines the snack and selected drink; actual ingredient and portion costs may vary.</p>
           <button class="button button-primary add-combo" type="button">Add custom box to bag</button>
         </aside>
       </div>

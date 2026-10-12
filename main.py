@@ -17,7 +17,12 @@ SNACKS = {
     "dipped-pretzels": {"name": "Mini Dipped Pretzels", "price": 10},
     "pretzel-rods": {"name": "Dipped Pretzel Rods", "price": 15},
 }
-LEMONADE_PRICE = 12
+DRINKS = {
+    "classic-lemonade": {"name": "Classic lemonade", "price": 12},
+    "iced-tea": {"name": "Iced tea", "price": 15},
+    "fruit-juice": {"name": "Fruit juice", "price": 20},
+    "bottled-water": {"name": "Bottled water", "price": 10},
+}
 EVENT_LOG_LIMIT = 6
 
 cart: dict[str, dict[str, str | int]] = {}
@@ -232,20 +237,27 @@ def update_combo(event=None) -> None:
     snack_select = document.querySelector("#combo-snack")
     snack = SNACKS[str(snack_select.value)]
     snack_price = int(snack.get("combo_price", snack["price"]))
+    drink = DRINKS[str(document.querySelector("#combo-drink").value)]
     dip = str(document.querySelector("#combo-dip").value)
 
     document.querySelector("#combo-snack-name").textContent = str(snack["name"])
     document.querySelector("#combo-snack-price").textContent = format_price(
         snack_price
     )
+    document.querySelector("#combo-drink-name").textContent = str(drink["name"])
+    document.querySelector("#combo-drink-price").textContent = format_price(
+        int(drink["price"])
+    )
     document.querySelector("#combo-dip-name").textContent = f"Dip: {dip}"
     document.querySelector("#combo-total").textContent = format_price(
-        snack_price + LEMONADE_PRICE
+        snack_price + int(drink["price"])
     )
 
     if event is not None:
         if event.currentTarget.id == "combo-snack":
             log_event("change", f"Snack selected: {snack['name']}.")
+        elif event.currentTarget.id == "combo-drink":
+            log_event("change", f"Drink selected: {drink['name']}.")
         else:
             log_event("change", f"Complimentary dip selected: {dip}.")
 
@@ -254,14 +266,16 @@ def handle_add_combo(event) -> None:
     snack_id = str(document.querySelector("#combo-snack").value)
     snack = SNACKS[snack_id]
     snack_price = int(snack.get("combo_price", snack["price"]))
+    drink_id = str(document.querySelector("#combo-drink").value)
+    drink = DRINKS[drink_id]
     dip = str(document.querySelector("#combo-dip").value)
     name = f"{snack['name']} snack box"
-    detail = f"Classic lemonade · complimentary {dip.lower()}"
+    detail = f"{drink['name']} · complimentary {dip.lower()}"
 
     add_to_cart(
-        f"combo:{snack_id}:{dip}",
+        f"combo:{snack_id}:{drink_id}:{dip}",
         name,
-        snack_price + LEMONADE_PRICE,
+        snack_price + int(drink["price"]),
         str(event.type),
         detail,
     )
@@ -393,6 +407,7 @@ listen(document.querySelector("#product-grid"), "click", handle_product_add)
 listen(document.querySelector(".filter-bar"), "click", handle_filter)
 listen(cart_items, "click", handle_cart_change)
 listen(document.querySelector("#combo-snack"), "change", update_combo)
+listen(document.querySelector("#combo-drink"), "change", update_combo)
 listen(document.querySelector("#combo-dip"), "change", update_combo)
 listen(document.querySelector(".add-combo"), "click", handle_add_combo)
 listen(checkout_button, "click", handle_checkout)
