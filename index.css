@@ -345,3 +345,18 @@ h1 > span:first-of-type, .about-copy h2 span { color: var(--orange-dark); }
   .hero-highlights li { padding: .45rem .38rem; }
   .founder-list { grid-template-columns: 1fr; }
 }
+
+#back-to-top {
+  display: block;
+  margin: 30px auto;
+  padding: 12px 20px;
+  background: #8f4536;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#back-to-top:hover {
+  background: #713629;
+}
