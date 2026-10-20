@@ -334,6 +334,23 @@
     <div class="cart-footer">
       <p class="cart-total"><span>Total</span><strong id="cart-total">₱0</strong></p>
       <p class="demo-notice">Local demo only: no payment is collected and no order is sent to the stall.</p>
+      
+<div class="payment-method">
+  <p><strong>Choose payment method:</strong></p>
+
+  <label>
+    <input type="radio" name="payment-method" value="Cash on Pickup" checked>
+    Cash on Pickup
+  </label>
+
+  <label>
+    <input type="radio" name="payment-method" value="GCash">
+    GCash
+  </label>
+
+  <p id="selected-payment">Selected payment: Cash on Pickup</p>
+</div>
+
       <button class="button button-primary checkout-button" id="checkout-button" type="button" disabled>Create pickup confirmation</button>
     </div>
     <div class="order-confirmation" id="order-confirmation" role="status" aria-live="polite" hidden>
@@ -347,6 +364,16 @@
   <p class="sr-only" id="cart-status" role="status" aria-live="polite"></p>
   <noscript><p class="noscript-notice">Interactive features use Python in PyScript and require JavaScript and an internet connection. Please serve this site over HTTP or HTTPS.</p></noscript>
 </body>
+
+<script>
+document.querySelectorAll('input[name="payment-method"]').forEach((option) => {
+  option.addEventListener('change', function () {
+    document.getElementById('selected-payment').textContent =
+      'Selected payment: ' + this.value;
+  });
+});
+</script>
+
 </html>
 
 <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
