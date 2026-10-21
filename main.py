@@ -1,11 +1,9 @@
-
 """PyScript-powered, event-driven interactions for the SnackPop demo."""
 
 from datetime import date
 from secrets import randbelow
 
-from js import confirm
-from pyodide.ffi import create_proxy  # type: ignore[reportMissingModuleSource]
+from js import confirm  # type: ignore[reportMissingImports]from pyodide.ffi import create_proxy  # type: ignore[reportMissingModuleSource]
 from pyscript import document  # type: ignore[reportMissingModuleSource]
 
 
@@ -23,7 +21,6 @@ DRINKS = {
     "fruit-juice": {"name": "Fruit juice", "price": 20},
     "bottled-water": {"name": "Bottled water", "price": 10},
 }
-EVENT_LOG_LIMIT = 6
 
 cart: dict[str, dict[str, str | int]] = {}
 cart_dialog = document.querySelector("#cart-dialog")
@@ -36,7 +33,6 @@ cart_status = document.querySelector("#cart-status")
 checkout_button = document.querySelector("#checkout-button")
 clear_cart_button = document.querySelector("#clear-cart-button")
 confirmation = document.querySelector("#order-confirmation")
-event_log = document.querySelector("#event-log")
 event_callbacks = []
 
 
@@ -48,18 +44,6 @@ def listen(element, event_name: str, handler) -> None:
     proxy = create_proxy(handler)
     event_callbacks.append(proxy)
     element.addEventListener(event_name, proxy)
-
-
-def log_event(event_type: str, description: str) -> None:
-    if event_log.querySelector(".event-placeholder"):
-        event_log.replaceChildren()
-
-    entry = document.createElement("li")
-    entry.textContent = f"{event_type} · {description}"
-    event_log.prepend(entry)
-
-    while event_log.children.length > EVENT_LOG_LIMIT:
-        event_log.removeChild(event_log.lastElementChild)
 
 
 def render_cart() -> None:
@@ -143,9 +127,7 @@ def render_cart() -> None:
         cart_items.append(row)
 
 
-def add_to_cart(
-    key: str, name: str, price: int, event_type: str, detail: str = ""
-) -> None:
+def add_to_cart(key: str, name: str, price: int, detail: str = "") -> None:
     if key in cart:
         cart[key]["quantity"] = int(cart[key]["quantity"]) + 1
     else:
@@ -160,26 +142,22 @@ def add_to_cart(
     checkout_button.hidden = False
     render_cart()
     cart_status.textContent = f"{name} added to your snack bag."
-    log_event(event_type, f"Added {name} ({format_price(price)}).")
 
 
-def open_cart(event) -> None:
+def open_cart(event=None) -> None:
     if not cart_dialog.open:
         cart_dialog.showModal()
-        log_event(str(event.type), "Opened the snack bag.")
 
 
 def close_cart(event=None) -> None:
     if cart_dialog.open:
         cart_dialog.close()
-        if event is not None:
-            log_event(str(event.type), "Closed the snack bag.")
 
 
 def handle_keydown(event) -> None:
     if event.key == "Escape" and cart_dialog.open:
         event.preventDefault()
-        close_cart(event)
+        close_cart()
 
 
 def handle_product_add(event) -> None:
@@ -199,11 +177,10 @@ def handle_product_add(event) -> None:
         f"{snack_id}:{flavor}",
         str(snack["name"]),
         int(snack["price"]),
-        str(event.type),
         flavor,
     )
     if order_now:
-        open_cart(event)
+        open_cart()
 
 
 def handle_filter(event) -> None:
@@ -229,8 +206,6 @@ def handle_filter(event) -> None:
     document.querySelector("#filter-status").textContent = (
         f"Showing {visible_count} {noun}."
     )
-    label = str(button.textContent).strip()
-    log_event("click", f"Menu filter changed to {label} ({visible_count} shown).")
 
 
 def update_combo(event=None) -> None:
@@ -253,14 +228,6 @@ def update_combo(event=None) -> None:
         snack_price + int(drink["price"])
     )
 
-    if event is not None:
-        if event.currentTarget.id == "combo-snack":
-            log_event("change", f"Snack selected: {snack['name']}.")
-        elif event.currentTarget.id == "combo-drink":
-            log_event("change", f"Drink selected: {drink['name']}.")
-        else:
-            log_event("change", f"Complimentary dip selected: {dip}.")
-
 
 def handle_add_combo(event) -> None:
     snack_id = str(document.querySelector("#combo-snack").value)
@@ -276,7 +243,6 @@ def handle_add_combo(event) -> None:
         f"combo:{snack_id}:{drink_id}:{dip}",
         name,
         snack_price + int(drink["price"]),
-        str(event.type),
         detail,
     )
 
@@ -297,9 +263,6 @@ def handle_cart_change(event) -> None:
         render_cart()
         cart_dialog.querySelector("[data-close-cart]").focus()
         cart_status.textContent = f"{removed_item['name']} removed from your bag."
-        log_event(
-            str(event.type), f"Removed {removed_item['name']} from the bag."
-        )
         return
 
     if button.hasAttribute("data-quantity"):
@@ -318,9 +281,6 @@ def handle_cart_change(event) -> None:
             render_cart()
             cart_dialog.querySelector("[data-close-cart]").focus()
             cart_status.textContent = f"{item['name']} removed from your bag."
-            log_event(
-                str(event.type), f"Removed {item['name']} from the bag."
-            )
             return
 
         confirmation.hidden = True
@@ -335,14 +295,8 @@ def handle_cart_change(event) -> None:
                 control.focus()
                 break
 
-        quantity = int(item["quantity"])
-        noun = "item" if quantity == 1 else "items"
         cart_status.textContent = (
-            f"{item['name']} quantity updated to {quantity}."
-        )
-        log_event(
-            str(event.type),
-            f"Updated {item['name']} quantity to {quantity} {noun}.",
+            f"{item['name']} quantity updated to {int(item['quantity'])}."
         )
 
 
@@ -367,10 +321,6 @@ def handle_clear_cart(event) -> None:
     cart_status.textContent = (
         f"Your snack bag has been cleared. {removed_count} items removed."
     )
-    log_event(
-        str(event.type),
-        f"Cleared all items from the bag ({removed_count} items).",
-    )
 
 
 def handle_checkout(event) -> None:
@@ -384,14 +334,6 @@ def handle_checkout(event) -> None:
     cart_status.textContent = (
         "A local demo pickup code was created. Your order has not been sent."
     )
-    log_event(
-        str(event.type), f"Created demo pickup code {code}; no order was sent."
-    )
-
-
-def handle_clear_event_log(event) -> None:
-    event_log.replaceChildren()
-    log_event(str(event.type), "Event log cleared.")
 
 
 # Retain each Pyodide proxy so its Python callback survives after registration.
@@ -400,7 +342,7 @@ listen(cart_dialog.querySelector("[data-close-cart]"), "click", close_cart)
 listen(
     cart_dialog,
     "click",
-    lambda event: close_cart(event) if event.target == cart_dialog else None,
+    lambda event: close_cart() if event.target == cart_dialog else None,
 )
 listen(document, "keydown", handle_keydown)
 listen(document.querySelector("#product-grid"), "click", handle_product_add)
@@ -412,12 +354,7 @@ listen(document.querySelector("#combo-dip"), "change", update_combo)
 listen(document.querySelector(".add-combo"), "click", handle_add_combo)
 listen(checkout_button, "click", handle_checkout)
 listen(clear_cart_button, "click", handle_clear_cart)
-listen(document.querySelector("#clear-event-log"), "click", handle_clear_event_log)
 
 document.querySelector("#current-year").textContent = str(date.today().year)
-document.querySelector("#pyscript-status").textContent = (
-    "Python ready · browser events are connected"
-)
 render_cart()
 update_combo()
-log_event("ready", "PyScript started Python and registered event handlers.")
