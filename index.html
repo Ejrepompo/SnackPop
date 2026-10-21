@@ -57,8 +57,18 @@
         </ul>
       </div>
       <figure class="hero-image-wrap">
-        <img class="hero-image" src="assets/hero-treats.jpg" alt="A colorful SnackPop treat box with cookie fries and assorted dips" width="614" height="420" fetchpriority="high">
-        <figcaption class="image-note"><span aria-hidden="true">🍪</span><span><strong>Snack break, sorted.</strong><small>Choose a treat. Pick your favorite dip.</small></span></figcaption>
+        <div class="hero-video-frame">
+  <video class="hero-video-bg" autoplay muted loop playsinline aria-hidden="true" tabindex="-1">
+    <source src="assets/hero-ad.mp4" type="video/mp4">
+  </video>
+        <video class="hero-video" autoplay muted loop playsinline preload="metadata"
+         poster="assets/hero-treats.jpg"
+         aria-label="SnackPop video ad showing cookie fries, pancakes and pretzels">
+         <source src="assets/hero-ad.webm" type="video/webm">
+         <source src="assets/hero-ad.mp4" type="video/mp4">
+         Your browser does not support the video tag.
+       </video>
+      </div>
       </figure>
     </section>
 
@@ -361,19 +371,19 @@
     </div>
   </dialog>
 
-  <p class="sr-only" id="cart-status" role="status" aria-live="polite"></p>
+    <p class="sr-only" id="cart-status" role="status" aria-live="polite"></p>
   <noscript><p class="noscript-notice">Interactive features use Python in PyScript and require JavaScript and an internet connection. Please serve this site over HTTP or HTTPS.</p></noscript>
+
+  <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑ Back to Top</button>
+
+  <script>
+    document.querySelectorAll('input[name="payment-method"]').forEach((option) => {
+      option.addEventListener('change', function () {
+        document.getElementById('selected-payment').textContent = 'Selected payment: ' + this.value;
+      });
+    });
+  </script>
 </body>
-
-<script>
-document.querySelectorAll('input[name="payment-method"]').forEach((option) => {
-  option.addEventListener('change', function () {
-    document.getElementById('selected-payment').textContent =
-      'Selected payment: ' + this.value;
-  });
-});
-</script>
-
 </html>
 
 <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
