@@ -46,6 +46,7 @@
         <p class="eyebrow"><span aria-hidden="true">✨</span> A little pick-me-up between classes</p>
         <h1 id="hero-title">Small snacks.<br><span>Big fun!</span> <span aria-hidden="true">🍪🥞</span></h1>
         <p class="hero-description">Freshly prepared, bite-sized treats, delicious dips and student-friendly prices. Make your next lecture break a little sweeter.</p>
+        <p class="hero-order-note">Demo browsing only: adding items or creating a pickup code does not send an order to the stall.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#menu">Explore the menu <span aria-hidden="true">↓</span></a>
           <a class="button button-secondary" href="#combo">Build a combo <span aria-hidden="true">🎁</span></a>
@@ -58,7 +59,7 @@
       </div>
       <figure class="hero-image-wrap">
         <div class="hero-video-frame">
-          <video class="hero-video" autoplay muted loop playsinline preload="metadata"
+          <video class="hero-video" controls loop playsinline preload="none"
             poster="assets/hero-treats.jpg"
             aria-label="SnackPop video ad showing cookie fries, pancakes and pretzels">
             <source src="assets/hero-ad.mp4" type="video/mp4">
@@ -75,7 +76,7 @@
           <h2 id="menu-title">Meet your new favorites</h2>
           <p>Small-batch treats, ready for your next campus snack break.</p>
         </div>
-        <p class="price-note">Estimated prices per serving; actual costs vary by recipe, portion size, and supplier. Choose your flavor before adding it to your bag.</p>
+        <p class="price-note">Estimated prices per serving; actual costs vary by recipe, portion size, and supplier. Menu availability can change, so ask the stall what is available today and about ingredients or allergens. Choose your flavor before adding it to your bag.</p>
       </div>
       <div class="filter-bar" role="group" aria-label="Filter menu">
         <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All treats</button>
@@ -87,7 +88,7 @@
       <div class="product-grid" id="product-grid">
         <article class="product-card" data-product="cookie-fries" data-categories="bestsellers sweet">
           <div class="product-image-wrap">
-            <img src="assets/menu-01.jpg" alt="Golden cookie fries served with dipping sauces" width="389" height="240" loading="lazy">
+            <img src="assets/menu-01.jpg" alt="Golden cookie fries served with dipping sauces" width="389" height="240" loading="lazy" decoding="async">
             <span class="product-badge">BEST SELLER</span>
           </div>
           <div class="product-content">
@@ -106,7 +107,7 @@
 
         <article class="product-card" data-product="mini-pancakes" data-categories="bestsellers sweet">
           <div class="product-image-wrap">
-            <img src="assets/menu-02.jpg" alt="Fluffy mini pancakes finished with a sweet glaze" width="389" height="240" loading="lazy">
+            <img src="assets/menu-02.jpg" alt="Fluffy mini pancakes finished with a sweet glaze" width="389" height="240" loading="lazy" decoding="async">
             <span class="product-badge badge-pink">FRESH &amp; FLUFFY</span>
           </div>
           <div class="product-content">
@@ -125,7 +126,7 @@
 
         <article class="product-card" data-product="lemon-bars" data-categories="sweet">
           <div class="product-image-wrap">
-            <img src="assets/menu-03.jpg" alt="Zesty lemon bars with a dusting of sugar" width="389" height="240" loading="lazy">
+            <img src="assets/menu-03.jpg" alt="Zesty lemon bars with a dusting of sugar" width="389" height="240" loading="lazy" decoding="async">
             <span class="product-badge badge-lemon">FRESH &amp; TANGY</span>
           </div>
           <div class="product-content">
@@ -144,7 +145,7 @@
 
         <article class="product-card" data-product="cookie-trio" data-categories="sweet">
           <div class="product-image-wrap">
-            <img src="assets/menu-04.jpg" alt="A trio of chocolate chip and red velvet mini cookies" width="389" height="240" loading="lazy">
+            <img src="assets/menu-04.jpg" alt="A trio of chocolate chip and red velvet mini cookies" width="389" height="240" loading="lazy" decoding="async">
             <span class="product-badge badge-pink">CHEWY &amp; WARM</span>
           </div>
           <div class="product-content">
@@ -163,7 +164,7 @@
 
         <article class="product-card" data-product="dipped-pretzels" data-categories="pretzels">
           <div class="product-image-wrap">
-            <img src="assets/menu-05.jpg" alt="Crunchy chocolate-dipped mini pretzels with colorful sprinkles" width="389" height="240" loading="lazy">
+            <img src="assets/menu-05.jpg" alt="Crunchy chocolate-dipped mini pretzels with colorful sprinkles" width="389" height="240" loading="lazy" decoding="async">
             <span class="product-badge badge-coral">SWEET &amp; SALTY</span>
           </div>
           <div class="product-content">
@@ -182,7 +183,7 @@
 
         <article class="product-card" data-product="pretzel-rods" data-categories="pretzels">
           <div class="product-image-wrap">
-            <img src="assets/menu-06.jpg" alt="Two long pretzel rods drizzled with chocolate and confetti" width="389" height="240" loading="lazy">
+            <img src="assets/menu-06.jpg" alt="Two long pretzel rods drizzled with chocolate and confetti" width="389" height="240" loading="lazy" decoding="async">
             <span class="product-badge badge-lilac">MADE TO SHARE</span>
           </div>
           <div class="product-content">
