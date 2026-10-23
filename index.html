@@ -283,7 +283,7 @@
         <li><span class="founder-initial" aria-hidden="true">J</span><span><strong>Jennylen</strong><small>Operations</small></span></li>
         <li><span class="founder-initial" aria-hidden="true">K</span><span><strong>Kristel Kaye</strong><small>Student Finance</small></span></li>
         <li><span class="founder-initial" aria-hidden="true">K</span><span><strong>Khrisya Mae</strong><small>Recipe Innovation</small></span></li>
-        <li><span class="founder-initial" aria-hidden="true">J</span><span><strong>Sabalande Sofia</strong><small>Logistics &amp; Tech</small></span></li>
+        <li><span class="founder-initial" aria-hidden="true">S</span><span><strong>Sabalande Sofia</strong><small>Logistics &amp; Tech</small></span></li>
       </ul>
     </section>
 
@@ -312,6 +312,8 @@
     <p class="copyright">© <span id="current-year">2026</span> SnackPop. Made for campus snack breaks.</p>
   </footer>
 
+  <p class="runtime-status" id="runtime-status" role="status" aria-live="polite">Loading interactive features…</p>
+
   <dialog class="cart-dialog" id="cart-dialog" aria-labelledby="cart-title">
     <div class="cart-header">
       <div><p class="eyebrow">SOMETHING GOOD IS IN HERE</p><h2 id="cart-title">Your snack bag</h2></div>
@@ -327,9 +329,9 @@
     </div>
     <div class="order-confirmation" id="order-confirmation" role="status" aria-live="polite" hidden>
       <p class="eyebrow">DEMO CONFIRMATION</p>
-      <h3>Your local pickup code</h3>
+      <h3>Demo reference code</h3>
       <p class="pickup-code" id="pickup-code"></p>
-      <p>This code was created only in this browser. The SnackPop stall has not received your order. Please order directly with the stall.</p>
+      <p>This code is only a browser demo and is not a pickup reservation. The SnackPop stall has not received your order. Please order directly with the stall.</p>
     </div>
   </dialog>
 
@@ -337,5 +339,14 @@
   <noscript><p class="noscript-notice">Interactive features use Python in PyScript and require JavaScript and an internet connection. Please serve this site over HTTP or HTTPS.</p></noscript>
 
   <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑ Back to Top</button>
+  <script>
+    window.setTimeout(() => {
+      const status = document.querySelector("#runtime-status");
+      if (document.body.dataset.interactionsReady !== "true") {
+        status.textContent = "Interactive features did not load. Check your internet connection and reload; the menu and business information remain available.";
+        status.classList.add("runtime-status-error");
+      }
+    }, 15000);
+  </script>
 </body>
 </html>

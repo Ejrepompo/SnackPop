@@ -392,3 +392,5 @@ listen(clear_cart_button, "click", handle_clear_cart)
 document.querySelector("#current-year").textContent = str(date.today().year)
 render_cart()
 update_combo()
+document.body.dataset.interactionsReady = "true"
+document.querySelector("#runtime-status").hidden = True
