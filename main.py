@@ -1,9 +1,11 @@
 """PyScript-powered, event-driven interactions for the SnackPop demo."""
 
 from datetime import date
+import json
 from secrets import randbelow
 
-from js import confirm  # type: ignore[reportMissingImports]from pyodide.ffi import create_proxy  # type: ignore[reportMissingModuleSource]
+from js import confirm, console, localStorage  # type: ignore[reportMissingImports]
+from pyodide.ffi import create_proxy  # type: ignore[reportMissingModuleSource]
 from pyscript import document  # type: ignore[reportMissingModuleSource]
 
 
@@ -22,7 +24,37 @@ DRINKS = {
     "bottled-water": {"name": "Bottled water", "price": 10},
 }
 
-cart: dict[str, dict[str, str | int]] = {}
+def load_cart() -> dict[str, dict[str, str | int]]:
+    saved_cart = localStorage.getItem("snackpop-cart")
+    if saved_cart is None:
+        return {}
+
+    try:
+        parsed_cart = json.loads(str(saved_cart))
+    except json.JSONDecodeError:
+        console.warn("Ignoring invalid saved SnackPop cart data.")
+        localStorage.removeItem("snackpop-cart")
+        return {}
+
+    if not isinstance(parsed_cart, dict) or any(
+        not isinstance(key, str)
+        or not isinstance(item, dict)
+        or not isinstance(item.get("name"), str)
+        or not isinstance(item.get("detail"), str)
+        or type(item.get("price")) is not int
+        or type(item.get("quantity")) is not int
+        or item["price"] < 0
+        or item["quantity"] < 1
+        for key, item in parsed_cart.items()
+    ):
+        console.warn("Ignoring invalid saved SnackPop cart data.")
+        localStorage.removeItem("snackpop-cart")
+        return {}
+
+    return parsed_cart
+
+
+cart: dict[str, dict[str, str | int]] = load_cart()
 cart_dialog = document.querySelector("#cart-dialog")
 cart_items = document.querySelector("#cart-items")
 cart_empty = document.querySelector("#cart-empty")
@@ -125,6 +157,8 @@ def render_cart() -> None:
         )
         row.append(copy, line_price, quantity_control)
         cart_items.append(row)
+
+    localStorage.setItem("snackpop-cart", json.dumps(cart))
 
 
 def add_to_cart(key: str, name: str, price: int, detail: str = "") -> None:

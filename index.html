@@ -58,17 +58,13 @@
       </div>
       <figure class="hero-image-wrap">
         <div class="hero-video-frame">
-  <video class="hero-video-bg" autoplay muted loop playsinline aria-hidden="true" tabindex="-1">
-    <source src="assets/hero-ad.mp4" type="video/mp4">
-  </video>
-        <video class="hero-video" autoplay muted loop playsinline preload="metadata"
-         poster="assets/hero-treats.jpg"
-         aria-label="SnackPop video ad showing cookie fries, pancakes and pretzels">
-         <source src="assets/hero-ad.webm" type="video/webm">
-         <source src="assets/hero-ad.mp4" type="video/mp4">
-         Your browser does not support the video tag.
-       </video>
-      </div>
+          <video class="hero-video" autoplay muted loop playsinline preload="metadata"
+            poster="assets/hero-treats.jpg"
+            aria-label="SnackPop video ad showing cookie fries, pancakes and pretzels">
+            <source src="assets/hero-ad.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
       </figure>
     </section>
 
@@ -286,7 +282,7 @@
         <li><span class="founder-initial" aria-hidden="true">J</span><span><strong>Jennylen</strong><small>Operations</small></span></li>
         <li><span class="founder-initial" aria-hidden="true">K</span><span><strong>Kristel Kaye</strong><small>Student Finance</small></span></li>
         <li><span class="founder-initial" aria-hidden="true">K</span><span><strong>Khrisya Mae</strong><small>Recipe Innovation</small></span></li>
-        <li><span class="founder-initial" aria-hidden="true">J</span><span><strong>John Marl</strong><small>Logistics &amp; Tech</small></span></li>
+        <li><span class="founder-initial" aria-hidden="true">J</span><span><strong>Sabalande Sofia</strong><small>Logistics &amp; Tech</small></span></li>
       </ul>
     </section>
 
@@ -325,25 +321,8 @@
     <button class="button button-secondary" id="clear-cart-button" type="button" hidden>Clear all items</button>
     <div class="cart-footer">
       <p class="cart-total"><span>Total</span><strong id="cart-total">₱0</strong></p>
-      <p class="demo-notice">Local demo only: no payment is collected and no order is sent to the stall.</p>
-      
-<div class="payment-method">
-  <p><strong>Choose payment method:</strong></p>
-
-  <label>
-    <input type="radio" name="payment-method" value="Cash on Pickup" checked>
-    Cash on Pickup
-  </label>
-
-  <label>
-    <input type="radio" name="payment-method" value="GCash">
-    GCash
-  </label>
-
-  <p id="selected-payment">Selected payment: Cash on Pickup</p>
-</div>
-
-      <button class="button button-primary checkout-button" id="checkout-button" type="button" disabled>Create pickup confirmation</button>
+      <p class="demo-notice">Demo only: your bag is saved in this browser. No payment is collected and no order is sent to the stall.</p>
+      <button class="button button-primary checkout-button" id="checkout-button" type="button" disabled>Create demo pickup code</button>
     </div>
     <div class="order-confirmation" id="order-confirmation" role="status" aria-live="polite" hidden>
       <p class="eyebrow">DEMO CONFIRMATION</p>
@@ -357,17 +336,5 @@
   <noscript><p class="noscript-notice">Interactive features use Python in PyScript and require JavaScript and an internet connection. Please serve this site over HTTP or HTTPS.</p></noscript>
 
   <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑ Back to Top</button>
-
-  <script>
-    document.querySelectorAll('input[name="payment-method"]').forEach((option) => {
-      option.addEventListener('change', function () {
-        document.getElementById('selected-payment').textContent = 'Selected payment: ' + this.value;
-      });
-    });
-  </script>
 </body>
 </html>
-
-<button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-  ↑ Back to Top
-</button>

@@ -107,8 +107,8 @@ h1 > span:first-of-type, .about-copy h2 span { color: var(--orange-dark); }
 .hero-highlights small { color: var(--muted); font-size: .62rem; line-height: 1.3; }
 .hero-image-wrap { position: relative; width: 100%; min-width: 0; margin: 0; }
 .hero-video-frame { position: relative; overflow: hidden; width: 100%; height: clamp(420px, 70vh, 560px); border-radius: 1.8rem; background: #000; box-shadow: var(--shadow); }
-.hero-video-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(24px) brightness(.7); transform: scale(1.15); }
-.hero-video { position: relative; display: block; width: 100%; height: 100%; object-fit: contain; }.image-note > span:first-child { font-size: 1.55rem; }
+.hero-video { position: relative; display: block; width: 100%; height: 100%; object-fit: cover; }
+.image-note > span:first-child { font-size: 1.55rem; }
 .image-note > span:last-child { display: grid; gap: .18rem; }
 .image-note strong { font-size: .83rem; }
 .image-note small { color: var(--muted); font-size: .7rem; }
